@@ -2,7 +2,19 @@ require 'rails_helper'
 
 RSpec.describe 'weather service' do
   it 'can return json' do
-    json = WeatherService.get_three_day_forecast_db
+    # json = WeatherService.get_three_day_forecast_db
+    fixture_json = File.read('spec/fixtures/weather_result.json')
+    place_id = "Denver"
+    stub_request(:get, "http://api.weatherapi.com/v1/forecast.json?days=3&key=65193e43a5804650b16155139210506&q=#{place_id}").
+        with(
+          headers: {
+         'Accept'=>'*/*',
+         'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+         'User-Agent'=>'Faraday v1.4.2'
+          }).
+        to_return(status: 200, body: fixture_json, headers: {})
+
+  json = WeatherService.get_three_day_forecast_db(place_id)
 
     expect(json).to be_a(Hash)
     expect(json).to have_key :forecast
@@ -10,7 +22,7 @@ RSpec.describe 'weather service' do
     expect(json[:forecast]).to have_key :forecastday
     expect(json[:forecast][:forecastday]).to be_an(Array)
     expect(json[:forecast][:forecastday].first).to be_a(Hash)
-    
+
     expect(json[:forecast][:forecastday].first).to have_key :astro
     expect(json[:forecast][:forecastday].first[:astro]).to be_a(Hash)
     expect(json[:forecast][:forecastday].first[:astro]).to have_key :sunrise
