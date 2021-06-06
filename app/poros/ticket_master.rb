@@ -3,13 +3,15 @@ class TicketMaster
               :url,
               :poster,
               :start_time,
-              :venue
+              :venue,
+              :id
 
   def initialize(data)
-    @event_name = data[:_embedded][:events][0][:name]
-    @url        = data[:_embedded][:events][0][:url]
-    @poster     = data[:_embedded][:events][0][:images][2][:url]
-    @start_time = data[:_embedded][:events][0][:sales][:public][:startDateTime]
-    @venue      = data[:_embedded][:events][0][:_embedded][:venues][0][:name]
+    @event_name = data[:name]
+    @url        = data[:url]
+    @poster     = data[:images][0][:url]
+    @start_time = data[:sales][:public][:startDateTime]
+    @venue      = data[:_embedded][:venues][0][:name]
+    @id         = data[:id]
   end
 end

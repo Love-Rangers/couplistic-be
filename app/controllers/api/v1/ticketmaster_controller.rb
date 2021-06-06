@@ -1,5 +1,5 @@
 class Api::V1::TicketmasterController < ApplicationController
-  def show 
+  def index
     keyword_query = "Red Rocks"
     city_query    = "Morrison"
 
@@ -10,7 +10,11 @@ class Api::V1::TicketmasterController < ApplicationController
     response = conn.get("discovery/v2/events.json?keyword=#{keyword_query}&city=#{city_query}")
     
     data  = JSON.parse(response.body, symbolize_names: true)
-    event = TicketMaster.new(data)
-    json render: EventSerializer.new(event)
+    
+    event_poros = data[:_embedded][:events][0..4].map do |event_data|
+      TicketMaster.new(event_data)
+    end
+    
+    render json: EventSerializer.new(event_poros)
   end
 end

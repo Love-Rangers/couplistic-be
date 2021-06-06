@@ -6,9 +6,11 @@ class Weather
               :moon_set_time,
               :forecast_condition,
               :forecast_icon,
-              :moon_illumination_grade
+              :moon_illumination_grade,
+              :id
 
   def initialize(weather_data)
+    @id             = nil
     @sunrise_time   = weather_data[:forecast][:forecastday][0][:astro][:sunrise]
     @sunset_time    = weather_data[:forecast][:forecastday][0][:astro][:sunset]
     @moonphase      = weather_data[:forecast][:forecastday][0][:astro][:moon_phase]
