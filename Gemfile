@@ -7,6 +7,8 @@ gem 'faraday'
 gem 'figaro'
 gem 'factory_bot_rails'
 gem 'faker'
+gem 'fast_jsonapi'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.5'
