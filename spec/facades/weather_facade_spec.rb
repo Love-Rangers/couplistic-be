@@ -4,14 +4,6 @@ RSpec.describe 'weather facade' do
   it 'can return a weather object' do
     VCR.use_cassette('Denver') do
       weather = WeatherFacade.get_three_day_forecast
-      # stub_request(:get, "http://api.weatherapi.com/v1/forecast.json?days=3&key=65193e43a5804650b16155139210506&q=Denver").
-      #     with(
-      #       headers: {
-      #      'Accept'=>'*/*',
-      #      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-      #      'User-Agent'=>'Faraday v1.4.2'
-      #       }).
-      #     to_return(status: 200, body: "", headers: {})
 
       expect(weather).to be_a(Weather)
       expect(weather.sunrise_time).to be_a(String)
