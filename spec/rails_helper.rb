@@ -63,7 +63,6 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
 end
 
-
 def weather_poro
   {
     "location": {

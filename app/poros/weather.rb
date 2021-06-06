@@ -9,13 +9,12 @@ class Weather
               :moon_illumination_grade
 
   def initialize(weather_data)
-    @sunrise_time = weather_data[:forecast][:forecastday][0][:astro][:sunrise]
-    @sunset_time = weather_data[:forecast][:forecastday][0][:astro][:sunset]
-    @moonphase = weather_data[:forecast][:forecastday][0][:astro][:moon_phase]
-    # @next_full_moon = weather_data[:]
+    @sunrise_time   = weather_data[:forecast][:forecastday][0][:astro][:sunrise]
+    @sunset_time    = weather_data[:forecast][:forecastday][0][:astro][:sunset]
+    @moonphase      = weather_data[:forecast][:forecastday][0][:astro][:moon_phase]
     @moon_rise_time = weather_data[:forecast][:forecastday][0][:astro][:moonrise]
-    @moon_set_time = weather_data[:forecast][:forecastday][0][:astro][:moonset]
-    @forecast_days = weather_data[:forecast][:forecastday]
+    @moon_set_time  = weather_data[:forecast][:forecastday][0][:astro][:moonset]
+    @forecast_days  = weather_data[:forecast][:forecastday]
   end
 
   def forecast_condition
