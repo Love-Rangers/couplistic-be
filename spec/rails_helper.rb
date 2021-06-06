@@ -1,5 +1,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'simplecov'
+SimpleCov.start
+SimpleCov.add_filter ['spec', 'config', '/app/mailers', 'app/jobs', 'app/channels']
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
