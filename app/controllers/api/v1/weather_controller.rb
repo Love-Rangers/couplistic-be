@@ -1,5 +1,6 @@
 class Api::V1::WeatherController < ApplicationController
-  def place_search_request
-    render json: WeatherFacade.get_three_day_forecast(params[:q])
+  def show
+    @weather = WeatherFacade.get_three_day_forecast(params[:q])
+    render json: WeatherSerializer.new(items)
   end
 end
