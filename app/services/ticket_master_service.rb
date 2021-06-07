@@ -6,7 +6,6 @@ class TicketMasterService < BaseService
         f.params[:keyword] = keyword_query
         f.params[:city]    = city_query
       end
-      
       format_json(response)[:_embedded][:events][0..4]
     end
   end
