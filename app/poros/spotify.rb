@@ -1,5 +1,5 @@
 class Spotify
-  attr_reader   :songs,
+  attr_reader   :id,
                 :artist,
                 :song_name
 
