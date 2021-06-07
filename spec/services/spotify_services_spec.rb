@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "spotify service" do
-    it "returns song data", :vcr do
+RSpec.describe "spotify service", :vcr do
+    it "returns song data" do
       data = SpotifyService.get_last_song_db
 
       expect(data).to be_a Hash

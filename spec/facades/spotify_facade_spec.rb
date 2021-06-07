@@ -6,7 +6,6 @@ RSpec.describe 'spotify facade' do
     spotify = SpotifyFacade.get_last_song
 
     expect(spotify).to be_a Spotify
-    expect(spotify.songs).to be_an Array
 
     expect(spotify.song_name).to be_an Array
     expect(spotify.song_name[0]).to be_a String
