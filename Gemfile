@@ -8,6 +8,8 @@ gem 'figaro'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'fast_jsonapi'
+gem 'travis'
+
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
