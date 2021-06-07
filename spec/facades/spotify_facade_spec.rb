@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'spotify facade' do
   it "returns a spotify object", :vcr do
-
     spotify = SpotifyFacade.get_last_song
 
     expect(spotify).to be_a Spotify
