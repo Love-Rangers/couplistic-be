@@ -6,32 +6,31 @@ class Weather
               :moon_set_time,
               :forecast_condition,
               :forecast_icon,
-              :moon_illumination_grade
-
+              :moon_illumination_grade,
+              :id
   def initialize(weather_data)
-    @sunrise_time = weather_data[:forecast][:forecastday][0][:astro][:sunrise]
-    @sunset_time = weather_data[:forecast][:forecastday][0][:astro][:sunset]
-    @moonphase = weather_data[:forecast][:forecastday][0][:astro][:moon_phase]
-    # @next_full_moon = weather_data[:]
-    @moon_rise_time = weather_data[:forecast][:forecastday][0][:astro][:moonrise]
-    @moon_set_time = weather_data[:forecast][:forecastday][0][:astro][:moonset]
-    @forecast_days = weather_data[:forecast][:forecastday]
+    @id                       = nil
+    @sunrise_time             = weather_data[:forecast][:forecastday][0][:astro][:sunrise]
+    @sunset_time              = weather_data[:forecast][:forecastday][0][:astro][:sunset]
+    @moonphase                = weather_data[:forecast][:forecastday][0][:astro][:moon_phase]
+    @moon_rise_time           = weather_data[:forecast][:forecastday][0][:astro][:moonrise]
+    @moon_set_time            = weather_data[:forecast][:forecastday][0][:astro][:moonset]
+    @forecast_condition       = forecast_condition_attr(weather_data)
+    @forecast_icon            = forecast_icon_attr(weather_data)
+    @moon_illumination_grade  = moon_illumination_grade_attr(weather_data)
   end
-
-  def forecast_condition
-    @forecast_days.map do |d|
+  def forecast_condition_attr(weather_data)
+    weather_data[:forecast][:forecastday].map do |d|
       d[:day][:condition][:text]
     end
   end
-
-  def forecast_icon
-    @forecast_days.map do |d|
+  def forecast_icon_attr(weather_data)
+    weather_data[:forecast][:forecastday].map do |d|
       d[:day][:condition][:icon]
     end
   end
-
-  def moon_illumination_grade
-    @forecast_days.map do |d|
+  def moon_illumination_grade_attr(weather_data)
+    weather_data[:forecast][:forecastday].map do |d|
       d[:astro][:moon_illumination]
     end
   end

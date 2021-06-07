@@ -8,6 +8,8 @@ gem 'figaro'
 gem 'factory_bot_rails'
 gem 'faker'
 gem 'fast_jsonapi'
+gem 'travis'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.5'
 # Use postgresql as the database for Active Record
@@ -34,9 +36,13 @@ group :development do
   gem 'launchy'
   gem 'simplecov'
   gem 'shoulda-matchers'
-  # gem 'webmock'
-  # gem 'vcr'
 end
+
+group :test do
+  gem 'webmock'
+  gem 'vcr'
+end
+
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
