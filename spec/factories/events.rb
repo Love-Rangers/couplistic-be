@@ -1,8 +1,8 @@
 FactoryBot.define do
-  factory :event do
-    name { "MyString" }
-    start_time { "2021-06-07 21:20:40" }
-    location { "MyString" }
-    user_id { 1 }
+  factory :random_event, class: Event do
+    name { Faker::Book.title }
+    start_time { Faker::Date.in_date_period(month: 6) }
+    location { Faker::Restaurant.name }
+    user_id { Faker::Number.number(digits: 3) }
   end
 end
