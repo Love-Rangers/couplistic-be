@@ -1,9 +1,8 @@
 FactoryBot.define do
   factory :event do
     name { "MyString" }
-    url { "MyString" }
-    poster { "MyString" }
-    start_time { "MyString" }
-    venue { "MyString" }
+    start_time { "2021-06-07 21:20:40" }
+    location { "MyString" }
+    user_id { 1 }
   end
 end
