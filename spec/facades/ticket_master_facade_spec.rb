@@ -4,11 +4,11 @@ RSpec.describe 'ticket master facade' do
   it 'can return a ticket master object' do
     fixture_json = File.read('spec/fixtures/morrison_search.json')
     search_details = "morrison_search"
-    
+
     keyword_query = "Red Rocks"
     city_query    = "Morrison"
 
-    stub_request(:get, "https://app.ticketmaster.com/discovery/v2/events.json?keyword=#{keyword_query}&city=#{city_query}&apikey=z8O2gWzfs5rYS1KeUK0dGJ3J9tKI07Rw").
+    stub_request(:get, "https://app.ticketmaster.com/discovery/v2/events.json?keyword=#{keyword_query}&city=#{city_query}&apikey=#{ENV['ticketm_key']}").
         with(
           headers: {
          'Accept'=>'*/*',
@@ -22,7 +22,7 @@ RSpec.describe 'ticket master facade' do
       expect(ticket_master).to be_an(Array)
 
       expect(ticket_master[0]).to be_a(TicketMaster)
-      
+
       expect(ticket_master[0].event_name).to be_a(String)
       expect(ticket_master[0].id).to be_a(String)
       expect(ticket_master[0].poster).to be_a(String)
