@@ -29,6 +29,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 5.0.0'
   gem 'pry'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -36,7 +37,6 @@ group :development do
   gem 'capybara'
   gem 'launchy'
   gem 'simplecov'
-  gem 'shoulda-matchers'
 end
 
 group :test do
