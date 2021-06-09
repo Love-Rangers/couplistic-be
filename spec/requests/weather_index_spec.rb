@@ -53,5 +53,21 @@ RSpec.describe "weather API" do
         expect(weather_data[:attributes][:moon_illumination_grade][-1]).to be_an(String)
       end
     end
+
+    it "Sad path: search parameter cannot be empty" do
+      VCR.use_cassette('Denver') do
+        search_details = ""
+        get "/api/v1/weather?q=#{search_details}"
+
+        expect(response.status).to eq(422)
+      end
+    end
+
+    it "Sad path: search parameter cannot be empty" do
+        search_details = "zxcv"
+        get "/api/v1/weather?q=#{search_details}"
+        
+        expect(response.status).to eq(422)
+    end
   end
 end
