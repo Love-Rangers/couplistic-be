@@ -18,6 +18,7 @@ class Api::V1::EventsController < ApplicationController
     if event.save
       render json: EventSerializer.new(Event.find_by(user_id: params[:user_id]))
     else
+      render json: {}, status: 422
     end
   end
 
