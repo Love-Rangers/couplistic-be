@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "weather API" do
   describe "search by location and city" do
-    it "can search for weather by Thornton" do
-      VCR.use_cassette('Denver') do
+    it "can search for weather by Thornton", :vcr do
+
         search_details = "Denver"
 
         get "/api/v1/weather?q=#{search_details}"
@@ -14,25 +14,25 @@ RSpec.describe "weather API" do
         expect(weather_data).to be_a(Hash)
         expect(weather_data).to have_key :id
         expect(weather_data[:id]).to eq(nil)
-        
+
         expect(weather_data).to have_key :type
         expect(weather_data[:type]).to be_a(String)
-        
+
         expect(weather_data).to have_key :attributes
         expect(weather_data[:attributes]).to be_a(Hash)
-        
+
         expect(weather_data[:attributes]).to have_key :next_full_moon
         expect(weather_data[:attributes][:next_full_moon]).to be_a(Integer)
 
         expect(weather_data[:attributes]).to have_key :sunrise_time
         expect(weather_data[:attributes][:sunrise_time]).to be_a(String)
-        
+
         expect(weather_data[:attributes]).to have_key :sunset_time
         expect(weather_data[:attributes][:sunset_time]).to be_a(String)
-        
+
         expect(weather_data[:attributes]).to have_key :moonphase
         expect(weather_data[:attributes][:moonphase]).to be_a(String)
-        
+
         expect(weather_data[:attributes]).to have_key :moon_rise_time
         expect(weather_data[:attributes][:moon_rise_time]).to be_a(String)
 
@@ -54,20 +54,18 @@ RSpec.describe "weather API" do
       end
     end
 
-    it "Sad path: search parameter cannot be empty" do
-      VCR.use_cassette('Denver') do
+    it "Sad path: search parameter cannot be empty", :vcr do
         search_details = ""
         get "/api/v1/weather?q=#{search_details}"
 
         expect(response.status).to eq(422)
-      end
     end
 
-    it "Sad path: search parameter cannot be empty" do
+    it "Sad path: search parameter cannot be empty", :vcr do
         search_details = "zxcv"
         get "/api/v1/weather?q=#{search_details}"
-        
+
         expect(response.status).to eq(422)
     end
-  end
+
 end

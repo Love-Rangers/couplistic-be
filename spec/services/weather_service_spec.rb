@@ -1,20 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe 'weather service' do
-  it 'can return json' do
-    # json = WeatherService.get_three_day_forecast_db
-    fixture_json = File.read('spec/fixtures/weather_result.json')
+  it 'can return json', :vcr do
     place_id = "Denver"
-    stub_request(:get, "http://api.weatherapi.com/v1/forecast.json?days=3&key=65193e43a5804650b16155139210506&q=#{place_id}").
-        with(
-          headers: {
-         'Accept'=>'*/*',
-         'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-         'User-Agent'=>'Faraday v1.4.2'
-          }).
-        to_return(status: 200, body: fixture_json, headers: {})
 
-  json = WeatherService.get_three_day_forecast_db(place_id)
+    json = WeatherService.get_three_day_forecast_db(place_id)
 
     expect(json).to be_a(Hash)
     expect(json).to have_key :forecast
