@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "GET '/api/v1/events" do
   it "Happy path: I can retrieve events for current calender month" do
-    events = FactoryBot.create_list(:random_event, 5)
+    events = FactoryBot.create_list(:random_event, 1)
     event_1  = FactoryBot.create(:random_event, user_id: 1)
     event_2  = FactoryBot.create(:random_event, user_id: 1)
     event_3  = FactoryBot.create(
