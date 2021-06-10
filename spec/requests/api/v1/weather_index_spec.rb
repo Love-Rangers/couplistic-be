@@ -7,10 +7,9 @@ RSpec.describe "weather API" do
         search_details = "Denver"
 
         get "/api/v1/weather?q=#{search_details}"
-
+        
         expect(response).to be_successful
         weather_data = JSON.parse(response.body, symbolize_names: true)[:data]
-        # require 'pry'; binding.pry
 
         expect(weather_data).to be_a(Hash)
         expect(weather_data).to have_key :id
@@ -53,6 +52,65 @@ RSpec.describe "weather API" do
         expect(weather_data[:attributes][:moon_illumination_grade][0]).to be_an(String)
         expect(weather_data[:attributes][:moon_illumination_grade][-1]).to be_an(String)
       end
+    end
+    it "sad path: user_id must be present" do
+      params = {
+        "location"=>"red rocks",
+        "name"=>"Jax",
+        "start_time"=>"2021-06-03T16:00:00Z",
+        "user_id"=> nil
+      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      post '/api/v1/events', headers: headers, params: JSON.generate(params)
+
+      expect(Event.count).to eq(0)
+      expect(response.status).to eq(422)
+    end
+
+    it "sad path: name must be present" do
+      params = {
+        "location"=>"red rocks",
+        "name"=>"",
+        "start_time"=>"2021-06-03T16:00:00Z",
+        "user_id"=> 1
+      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      post '/api/v1/events', headers: headers, params: JSON.generate(params)
+
+      expect(Event.count).to eq(0)
+      expect(response.status).to eq(422)
+    end
+
+    it "sad path: location must be present" do
+      params = {
+        "location"=>"",
+        "name"=>"Big Chungus",
+        "start_time"=>"2021-06-03T16:00:00Z",
+        "user_id"=> nil
+      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      post '/api/v1/events', headers: headers, params: JSON.generate(params)
+
+      expect(Event.count).to eq(0)
+      expect(response.status).to eq(422)
+    end
+
+    it "sad path: start_time must be DateTime datatype" do
+      params = {
+        "location"=>"Looney Tunes",
+        "name"=>"Big Chungus",
+        "start_time"=>"abc",
+        "user_id"=> 1
+      }
+      headers = {"CONTENT_TYPE" => "application/json"}
+
+      post '/api/v1/events', headers: headers, params: JSON.generate(params)
+
+      expect(Event.count).to eq(0)
+      expect(response.status).to eq(422)
     end
   end
 end
