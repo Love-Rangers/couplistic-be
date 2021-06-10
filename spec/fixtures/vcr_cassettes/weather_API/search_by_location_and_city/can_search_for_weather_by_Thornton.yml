@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 10 Jun 2021 18:39:55 GMT
+      - Thu, 10 Jun 2021 18:40:03 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -49,9 +49,9 @@ http_interactions:
       Cache-Control:
       - public, max-age=180
       Cdn-Requestid:
-      - 8f84eb3c978a243c73f91afb16bb831c
+      - b11d3f43c8beb5ad88a64b8767b5359b
       Cdn-Cache:
-      - EXPIRED
+      - HIT
     body:
       encoding: ASCII-8BIT
       string: '{"location":{"name":"Denver","region":"Colorado","country":"United
@@ -174,5 +174,5 @@ http_interactions:
         cloudy","icon":"//cdn.weatherapi.com/weather/64x64/night/116.png","code":1003},"wind_mph":6.0,"wind_kph":9.7,"wind_degree":211,"wind_dir":"SSW","pressure_mb":1012.0,"pressure_in":30.4,"precip_mm":0.0,"precip_in":0.0,"humidity":36,"cloud":5,"feelslike_c":28.3,"feelslike_f":82.9,"windchill_c":25.9,"windchill_f":78.6,"heatindex_c":28.3,"heatindex_f":82.9,"dewpoint_c":6.9,"dewpoint_f":44.4,"will_it_rain":0,"chance_of_rain":"0","will_it_snow":0,"chance_of_snow":"0","vis_km":10.0,"vis_miles":6.0,"gust_mph":10.7,"gust_kph":17.3,"uv":1.0},{"time_epoch":1623560400,"time":"2021-06-12
         23:00","temp_c":24.3,"temp_f":75.7,"is_day":0,"condition":{"text":"Partly
         cloudy","icon":"//cdn.weatherapi.com/weather/64x64/night/116.png","code":1003},"wind_mph":5.1,"wind_kph":8.3,"wind_degree":223,"wind_dir":"SW","pressure_mb":1012.0,"pressure_in":30.4,"precip_mm":0.0,"precip_in":0.0,"humidity":36,"cloud":5,"feelslike_c":26.1,"feelslike_f":79.0,"windchill_c":24.3,"windchill_f":75.7,"heatindex_c":26.1,"heatindex_f":79.0,"dewpoint_c":6.7,"dewpoint_f":44.1,"will_it_rain":0,"chance_of_rain":"0","will_it_snow":0,"chance_of_snow":"0","vis_km":10.0,"vis_miles":6.0,"gust_mph":8.7,"gust_kph":14.0,"uv":1.0}]}]}}'
-  recorded_at: Thu, 10 Jun 2021 18:39:55 GMT
+  recorded_at: Thu, 10 Jun 2021 18:40:03 GMT
 recorded_with: VCR 6.0.0

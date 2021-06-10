@@ -1,21 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe 'ticket master facade' do
-  it 'can return a ticket master object' do
-    fixture_json = File.read('spec/fixtures/morrison_search.json')
-    search_details = "morrison_search"
-
+  it 'can return a ticket master object', :vcr do
     keyword_query = "Red Rocks"
     city_query    = "Morrison"
-
-    stub_request(:get, "https://app.ticketmaster.com/discovery/v2/events.json?keyword=#{keyword_query}&city=#{city_query}&apikey=#{ENV['ticketm_key']}").
-        with(
-          headers: {
-         'Accept'=>'*/*',
-         'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-         'User-Agent'=>'Faraday v1.4.2'
-          }).
-        to_return(status: 200, body: fixture_json, headers: {})
 
       ticket_master = TicketMasterFacade.event_search(keyword_query, city_query)
 

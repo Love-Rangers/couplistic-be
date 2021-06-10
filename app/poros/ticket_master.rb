@@ -8,10 +8,10 @@ class TicketMaster
 
   def initialize(data)
     @event_name = data[:name]
-    @url        = data[:url]
-    @poster     = data[:images][0][:url]
+    @url = data[:url]
+    @poster = data[:images][0][:url]
     @start_time = data[:sales][:public][:startDateTime]
-    @venue      = data[:_embedded][:venues][0][:name]
-    @id         = data[:id]
+    @venue = data[:_embedded][:venues][0][:name]
+    @id = data[:id]
   end
 end
