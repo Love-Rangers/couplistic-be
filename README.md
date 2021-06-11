@@ -43,7 +43,7 @@
 
 ## About The Project
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
-Welcome to Couplistic! This repository contains our backend Rails app. This app makes calls to the Spotify and Open Weather API's and exposes API endpoints to our [frontend Rails API](https://github.com/Love-Rangers/couplistic/couplistic_fe).
+Welcome to Couplistic! This repository contains our backend Rails app. This app makes calls to the Spotify and Open Weather API's and exposes API endpoints to our [frontend Rails API](https://github.com/Love-Rangers/couplistic/couplistic-fe).
 This project is deployed on [Heroku here](heroku-link-here)
 ### Built With
 * [Ruby on Rails](https://rubyonrails.org/)
@@ -65,8 +65,6 @@ See the [open issues](https://github.com/Love-Rangers/couplistic/issues) for a l
 ### System Design
 ###### Basic Web Architecture 
 ![Architecture](to make web architecture here)
-###### Initial Wireframes
-![Wireframes](screen shot of initial wire frames here)
 <!-- CONTRIBUTING -->
 ## Contributing
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**. We hope that users provide input to improve their experience and that of others.
